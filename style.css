@@ -1,0 +1,63 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  Font-family: inherit;
+  }
+  
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+  
+  ul[role='list'],
+  ol[role='list'] {
+    list-style: none;
+  }
+  
+  #root, #__next {
+    isolation: isolate;
+  }
+  html, body {
+  height: 100%;
+  }
+  html {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    background: radial-gradient( hsl(301, 94%, 44%), hsl(298, 85%, 13%));
+  }
+  .tarot-page__heading {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .tarot-card-display__flexbox {
+    display: flex;
+    gap: 5rem;
+  }
+  .tarot-card-display__container {
+    width: 280px;
+    height: 420px;
+    border: 2px solid white;
+  } 
+  .tarot-page__input-form {
+    margin-bottom: 3rem;
+  }
