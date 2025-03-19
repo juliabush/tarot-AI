@@ -60,9 +60,36 @@
   .tarot-card-display__container {
     width: 280px;
     height: 420px;
-    border: 6px solid white;
+    background: white;
+    border: none;
     position: relative;
   } 
+  @property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes rotation {
+    0%      {--gradient-angle: 0deg;}
+    100%    {--gradient-angle: 360deg;}
+  }
+  .tarot-card-display__container::before,
+  .tarot-card-display__container::after {
+    content: "";
+    position: absolute;
+    inset: -0.3rem;
+    background: linear-gradient(
+      var(--gradient-angle),
+      rgb(15, 21, 110),
+      rgb(99, 91, 207),
+      rgb(127, 163, 209)
+    );
+    animation: rotation 20s linear infinite;
+    z-index: -1;
+  }
+  .tarot-card-display__container::after {
+    filter: blur(3.5rem);
+  }
   .tarot-page__input-form {
     margin-bottom: 3rem;
   }
