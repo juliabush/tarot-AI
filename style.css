@@ -37,6 +37,7 @@
   }
   html, body {
   height: 100%;
+  font-family: 'Inconsolata';
   }
   html {
     display: grid;
@@ -48,6 +49,9 @@
     font-size: 3rem;
     text-transform: uppercase;
     margin-bottom: 2rem;
+    letter-spacing: 4px;
+    color: white;
+    text-shadow: 8px 8px 6px rgb(37, 2, 37);
   }
   .tarot-card-display__flexbox {
     display: flex;
@@ -56,8 +60,36 @@
   .tarot-card-display__container {
     width: 280px;
     height: 420px;
-    border: 2px solid white;
+    border: 6px solid white;
+    position: relative;
   } 
   .tarot-page__input-form {
     margin-bottom: 3rem;
+  }
+  form {
+    display: flex;
+    place-content: center;
+  }
+  input {
+    position: relative;
+    left: 2rem;
+    padding: 1rem 1rem 1rem 2rem;
+    width: 660px;
+    border-radius: 2rem;
+    border: 3px solid white;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+  }
+  input[type=text]:focus {
+    border: 3px solid rgb(140, 101, 231);
+    outline: none;
+  }
+  button {
+    position: relative;
+    width: 80px;
+    border-radius: 2rem;
+    border: none;
+    right: 3rem;
+    cursor: pointer;
+    background-color: #d9b4f8;
   }
