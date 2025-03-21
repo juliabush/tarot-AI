@@ -4,25 +4,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128302;</text></svg>">
-        <title>tarot.io</title>
+        <title>asktarotanything.io</title>
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+        <script src="main.js" defer></script>
     </head>
     <body>
         <main class="tarot-page__container">
             <h1 class="tarot-page__heading">Ask tarot anything</h1>
             <form class="tarot-page__input-form" action="/" method="GET">
-                <input type="text" placeholder="input your question here, be as descriptive as possible..." required>
-                <button type="submit" style="font-size: 24px;">&#128302;</button>
+                <input type="text" placeholder="input your question here, be as descriptive as possible..." required id="user-input">
+                <button type="submit" style="font-size: 24px;" id="user-submit-button">&#128302;</button>
             </form>
             <div class="tarot-card-display__flexbox">
                 <div class="tarot-card-display__container"></div>
                 <div class="tarot-card-display__container"></div>
                 <div class="tarot-card-display__container"></div>
             </div>
-            <dialog>
+            <dialog id="dialog-popup">
                 
             </dialog>
         </main>

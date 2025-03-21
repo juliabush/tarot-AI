@@ -120,3 +120,7 @@
     cursor: pointer;
     background-color: #d9b4f8;
   }
+  dialog {
+    background-color: white;
+    width: 80%;
+  }
