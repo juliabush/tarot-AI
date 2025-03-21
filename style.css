@@ -121,6 +121,19 @@
     background-color: #d9b4f8;
   }
   dialog {
+    place-self: center;
     background-color: white;
     width: 80%;
+    height: 85%;
+    border: none;
+    outline: none;
+    padding: 2rem;
+    text-align: start;
+    border-radius: 2rem;
+    transition: 1s ease-in;
+    font-family: 'Poppins';
+    font-size: 1.25rem;
+  }
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
   }
