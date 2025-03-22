@@ -9,19 +9,28 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <script src="main.js" defer></script>
     </head>
     <body>
         <main class="tarot-page__container">
             <h1 class="tarot-page__heading">Ask tarot anything</h1>
-            <form class="tarot-page__input-form" action="/" method="GET">
+            <form class="tarot-page__input-form" action="/" method="POST">
                 <input type="text" placeholder="input your question here, be as descriptive as possible..." required id="user-input">
                 <button type="submit" style="font-size: 24px;" id="user-submit-button">&#128302;</button>
             </form>
             <div class="tarot-card-display__flexbox">
-                <div class="tarot-card-display__container"></div>
-                <div class="tarot-card-display__container"></div>
-                <div class="tarot-card-display__container"></div>
+                <div class="tarot-card-display__container" id="card1">
+                    <img src="tarot-card-images/the-fool.jpeg" alt="">
+                </div>
+                <div class="tarot-card-display__container" id="card2">
+                    <img src="tarot-card-images/the-fool.jpeg" alt="">
+                </div>
+                <div class="tarot-card-display__container" id="card3">
+                    <img src="tarot-card-images/the-fool.jpeg" alt="">
+                </div>
             </div>
             <dialog id="dialog-popup">
                 
