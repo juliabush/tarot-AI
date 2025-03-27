@@ -82,7 +82,7 @@ userSubmitButton.addEventListener("click", async (event) => {
  */
 async function sendTarotReading(selectedCards) {
     try {
-        const response = await fetch('https://tarot-ai-jbka.onrender.com/', {
+        const response = await fetch('https://tarot-ai-jbka.onrender.com/get-tarot-reading', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
