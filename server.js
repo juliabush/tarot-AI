@@ -11,7 +11,7 @@ const port = process.env.PORT || 10000;
 app.use(cors());
 app.use(express.json());
 
-app.post('/get-tarot-reading', async (req, res) => {
+app.post('https://tarot-ai-jbka.onrender.com/get-tarot-reading', async (req, res) => {
     const { userInput, selectedCards } = req.body;  // Extract both user input & selected cards
 
     if (!selectedCards || selectedCards.length !== 3) {
