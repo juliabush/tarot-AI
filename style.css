@@ -155,6 +155,9 @@
     height: 420px;
     border-radius: 1rem;
   }
+  i {
+    background-color: red;
+  }
   .visible {
     display: block;
   }
@@ -188,7 +191,7 @@
   }
   .tarot-page__heading {
     place-self: center;
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     margin-top: 3rem;
@@ -199,9 +202,9 @@
   input {
     position: relative;
     place-self: center;
-    font-size: 1rem;
+    font-size: 0.875rem;
     left: 1.75rem;
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 2rem;
     width: 300px;
     max-width: 360px;
     border-radius: 2rem;
@@ -251,8 +254,18 @@
     right: 32%;
     top: 63%;
   }
+  .tarot-page__heading {
+    place-self: center;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+    letter-spacing: 3px;
+    color: white;
+    text-shadow: 8px 8px 6px rgb(37, 2, 37);
+  }
 }
-@media (min-width:460px) and (max-width:550px) {
+@media (min-width:420px) and (max-width:550px) {
   input {
     position: relative;
     place-self: center;
@@ -270,7 +283,172 @@
     right: 37%;
     top: 63%;
   }
+  .tarot-page__heading {
+    place-self: center;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+    letter-spacing: 3px;
+    color: white;
+    text-shadow: 8px 8px 6px rgb(37, 2, 37);
+  }
 }
-@media (min-width:550px) and (max-width:720px) {
+@media (min-width:550px) and (max-width:620px) {
+  input {
+    position: relative;
+    place-self: center;
+    font-size: 1rem;
+    left: 2.5rem;
+    padding: 1rem 2rem 1rem 2rem;
+    width: 540px;
+    border-radius: 2rem;
+    border: 3px solid white;
+    text-transform: capitalize;
+    letter-spacing: 0px;
+  }
+    .tarot-card-display__container {
+      width: 160px;
+      height: 250px;
+      border-radius: 0.2rem;
+      background: white;
+      border: none;
+      position: relative;
+    } 
+    img {
+      display: none;
+      position: absolute;
+      width: 160px;
+      height: 250px;
+      border-radius: 0.2rem;
+    }
+    .tarot-card-display__flexbox {
+    place-self: center;
+     gap: 2.5rem;
+     margin-left: 10%;
+     margin-right: 10%;
+    }
+    button {
+      position: relative;
+      width: 70px;
+      border-radius: 1.5rem;
+      border: none;
+      right: 1.87rem;
+      cursor: pointer;
+      background-color: #d9b4f8;
+    }
+}
 
+@media (min-width:620px) and (max-width:720px) {
+  input {
+    position: relative;
+    place-self: center;
+    font-size: 1rem;
+    left: 2.5rem;
+    padding: 1rem 2rem 1rem 2rem;
+    width: 600px;
+    border-radius: 2rem;
+    border: 3px solid white;
+    text-transform: capitalize;
+    letter-spacing: 0px;
+  }
+  button {
+    position: relative;
+    width: 70px;
+    border-radius: 1.5rem;
+    border: none;
+    right: 1.87rem;
+    cursor: pointer;
+    background-color: #d9b4f8;
+  }
+  .tarot-card-display__container {
+    width: 180px;
+    height: 270px;
+    border-radius: 0.2rem;
+    background: white;
+    border: none;
+    position: relative;
+  } 
+  img {
+    display: none;
+    position: absolute;
+    width: 180px;
+    height: 270px;
+    border-radius: 0.2rem;
+  }
+  .tarot-card-display__flexbox {
+  place-self: center;
+   gap: 3rem;
+   margin-left: 10%;
+   margin-right: 10%;
+  }
+}
+@media (min-width:720px) and (max-width:800px) {
+  .tarot-card-display__container {
+    width: 200px;
+    height: 300px;
+    border-radius: 0.2rem;
+    background: white;
+    border: none;
+    position: relative;
+  } 
+  img {
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    border-radius: 0.2rem;
+  }
+  .tarot-card-display__flexbox {
+    place-self: center;
+     gap: 2.5rem;
+     margin-left: 10%;
+     margin-right: 10%;
+    }
+}
+@media (min-width:800px) and (max-width:860px) {
+  .tarot-card-display__container {
+    width: 220px;
+    height: 320px;
+    border-radius: 0.2rem;
+    background: white;
+    border: none;
+    position: relative;
+  } 
+  img {
+    display: none;
+    position: absolute;
+    width: 220px;
+    height: 320px;
+    border-radius: 0.2rem;
+  }
+  .tarot-card-display__flexbox {
+  place-self: center;
+   gap: 3rem;
+   margin-left: 10%;
+   margin-right: 10%;
+  }
+}
+@media (min-width:860px) and (max-width:1050px) {
+  .tarot-card-display__container {
+    width: 250px;
+    height: 380px;
+    border-radius: 0.2rem;
+    background: white;
+    border: none;
+    position: relative;
+  } 
+  img {
+    display: none;
+    position: absolute;
+    width: 250px;
+    height: 380px;
+    border-radius: 0.2rem;
+  }
+  .tarot-card-display__flexbox {
+  place-self: center;
+   gap: 3rem;
+   margin-left: 10%;
+   margin-right: 10%;
+  }
 }
