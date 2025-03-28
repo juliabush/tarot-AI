@@ -2,33 +2,37 @@ import express from 'express';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import cors from 'cors';
-
-dotenv.config();
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+dotenv.config();  // Ensure the API_KEY is loaded from the .env file
+
 const app = express();
-app.use(cors());
 
+// Set up CORS
 const corsOptions = {
-    origin: 'https://asktarotanything.com', 
-    methods: ['GET', 'POST'], 
-    allowedHeaders: ['Content-Type'], 
-  };
-  
-  app.use(cors(corsOptions)); 
-  
+    origin: 'https://asktarotanything.com',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+};
 
+app.use(cors(corsOptions));  // Apply CORS middleware
+
+// Parse incoming JSON bodies
+app.use(express.json());  // Required for POST requests
+
+// Path setup for static files (index.html)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Serve static files
 app.use(express.static(__dirname));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
-const port = process.env.PORT || 10000;
 
+// Tarot reading endpoint
 app.post('/get-tarot-reading', async (req, res) => {
     const { userInput, selectedCards } = req.body;  // Extract both user input & selected cards
 
@@ -37,7 +41,7 @@ app.post('/get-tarot-reading', async (req, res) => {
     }
 
     try {
-        // Send a request to OpenAI to get the tarot reading
+        // Send request to OpenAI API for tarot reading
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -66,10 +70,16 @@ app.post('/get-tarot-reading', async (req, res) => {
             })
         });
 
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error("OpenAI API Error:", errorData);
+            return res.status(500).json({ error: "Failed to get tarot reading from OpenAI" });
+        }
+
         const data = await response.json();
         const aiResponse = data.choices[0].message.content;
 
-        // Send the response back to the client (frontend)
+        // Send the tarot reading response back to the frontend
         res.json({ aiResponse });
     } catch (error) {
         console.error("Error:", error);
@@ -78,6 +88,7 @@ app.post('/get-tarot-reading', async (req, res) => {
 });
 
 // Start the server
+const port = process.env.PORT || 10000;
 app.listen(port, "0.0.0.0", () => {
     console.log(`Server is running on port ${port}`);
 });
