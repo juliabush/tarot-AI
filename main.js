@@ -76,7 +76,7 @@ userSubmitButton.addEventListener("click", async (event) => {
 
 async function sendTarotReading(selectedCards) {
     try {
-        const response = await fetch('http://localhost:10000/get-tarot-reading', {  // Change to correct server URL
+        const response = await fetch('https://tarot-ai-jbka.onrender.com/get-tarot-reading', {  // Change to correct server URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
