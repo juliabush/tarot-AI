@@ -11,7 +11,7 @@ const port = process.env.PORT || 10000;
 app.use(cors());
 app.use(express.json());
 
-app.post('https://tarot-ai-jbka.onrender.com/get-tarot-reading', async (req, res) => {
+app.post('/get-tarot-reading', async (req, res) => {
     const { userInput, selectedCards } = req.body;  // Extract both user input & selected cards
 
     if (!selectedCards || selectedCards.length !== 3) {
@@ -19,6 +19,7 @@ app.post('https://tarot-ai-jbka.onrender.com/get-tarot-reading', async (req, res
     }
 
     try {
+        // Send a request to OpenAI to get the tarot reading
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -26,7 +27,7 @@ app.post('https://tarot-ai-jbka.onrender.com/get-tarot-reading', async (req, res
                 "Authorization": `Bearer ${process.env.API_KEY}`
             },
             body: JSON.stringify({
-                model: "gpt-4o",
+                model: "gpt-4",
                 messages: [
                     {
                         role: "system",
@@ -50,6 +51,7 @@ app.post('https://tarot-ai-jbka.onrender.com/get-tarot-reading', async (req, res
         const data = await response.json();
         const aiResponse = data.choices[0].message.content;
 
+        // Send the response back to the client (frontend)
         res.json({ aiResponse });
     } catch (error) {
         console.error("Error:", error);
@@ -57,8 +59,10 @@ app.post('https://tarot-ai-jbka.onrender.com/get-tarot-reading', async (req, res
     }
 });
 
+// Start the server
 app.listen(port, "0.0.0.0", () => {
     console.log(`Server is running on port ${port}`);
 });
+
 
 

@@ -35,7 +35,6 @@ function highlightRandomCards(duration) {
 
 highlightRandomCards(1200);
 
-
 userSubmitButton.addEventListener("click", async (event) => {
     event.preventDefault();
 
@@ -56,7 +55,6 @@ userSubmitButton.addEventListener("click", async (event) => {
         if (shuffleCount > 10) {
             clearInterval(shuffleInterval);
 
-
             finalCards = cardContainers.map(container => {
                 const cards = Array.from(container.getElementsByTagName("img"));
                 let selectedCard = cards.find(card => card.classList.contains("visible"));
@@ -68,7 +66,6 @@ userSubmitButton.addEventListener("click", async (event) => {
                 return selectedCard;
             });
 
-
             const selectedCardNames = finalCards.map(card => card.alt);
 
             console.log("Final selected cards:", selectedCardNames); // Debugging
@@ -79,7 +76,7 @@ userSubmitButton.addEventListener("click", async (event) => {
 
 async function sendTarotReading(selectedCards) {
     try {
-        const response = await fetch('https://asktarotanything.com/get-tarot-reading', {
+        const response = await fetch('http://localhost:10000/get-tarot-reading', {  // Change to correct server URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -99,3 +96,4 @@ async function sendTarotReading(selectedCards) {
         console.error("Error:", error);
     }
 }
+
