@@ -4,15 +4,23 @@ import fetch from 'node-fetch';
 import cors from 'cors';
 
 dotenv.config();
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
-const port = process.env.PORT || 10000;
 
+// Convert import.meta.url to __dirname (ES Module fix)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from the current directory
 app.use(express.static(__dirname));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
+const port = process.env.PORT || 10000;
 
 app.post('/get-tarot-reading', async (req, res) => {
     const { userInput, selectedCards } = req.body;  // Extract both user input & selected cards
