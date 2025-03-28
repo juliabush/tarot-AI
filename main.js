@@ -88,12 +88,33 @@ async function sendTarotReading(selectedCards) {
         });
 
         const data = await response.json();
-        const aiResponse = data.aiResponse;
+        const aiResponse = data.aiResponse; // Full AI response as text
 
-        dialogPopUp.innerHTML = `<p>${aiResponse}</p>`;
+        // Clear dialog and show it
+        dialogPopUp.innerHTML = `<p id="typingEffect"></p>`;
         dialogPopUp.showModal();
+
+        const typingElement = document.getElementById("typingEffect");
+        typeText(aiResponse, typingElement);
+
     } catch (error) {
         console.error("Error:", error);
     }
 }
+
+// Function to display text word by word
+function typeText(text, element) {
+    const words = text.split(" ");
+    let index = 0;
+
+    const interval = setInterval(() => {
+        if (index < words.length) {
+            element.innerHTML += words[index] + " ";
+            index++;
+        } else {
+            clearInterval(interval); // Stop when done
+        }
+    }, 100); // Adjust speed (100ms per word)
+}
+
 
