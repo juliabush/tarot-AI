@@ -10,11 +10,18 @@ import { fileURLToPath } from 'url';
 const app = express();
 app.use(cors());
 
-// Convert import.meta.url to __dirname (ES Module fix)
+const corsOptions = {
+    origin: 'https://asktarotanything.com', 
+    methods: ['GET', 'POST'], 
+    allowedHeaders: ['Content-Type'], 
+  };
+  
+  app.use(cors(corsOptions)); 
+  
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve static files from the current directory
 app.use(express.static(__dirname));
 
 app.get('*', (req, res) => {
