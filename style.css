@@ -220,9 +220,10 @@
     background-color: #d9b4f8;
   }
   #card3{
-    position: absolute;
-    right: 32%;
-    top: 63%;
+    position: relative;
+    /* right: 12%; */
+    /* top: 63%; */
+    left: 57%;
   }
 }
 @media (min-width:375px) and (max-width:420px) {
@@ -248,9 +249,8 @@
     background-color: #d9b4f8;
   }
   #card3{
-    position: absolute;
-    right: 32%;
-    top: 63%;
+    position: relative;
+    left: 57%;
   }
   .tarot-page__heading {
     place-self: center;
@@ -276,11 +276,6 @@
     text-transform: capitalize;
     letter-spacing: 0px;
   }
-  #card3{
-    position: absolute;
-    right: 37%;
-    top: 63%;
-  }
   .tarot-page__heading {
     place-self: center;
     font-size: 1.75rem;
@@ -290,6 +285,10 @@
     letter-spacing: 3px;
     color: white;
     text-shadow: 8px 8px 6px rgb(37, 2, 37);
+  }
+  #card3{
+    position: relative;
+    left: 57%;
   }
 }
 @media (min-width:550px) and (max-width:620px) {
