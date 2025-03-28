@@ -1,10 +1,6 @@
-function formatText(text) {
-    return text
-        .replace(/\*\*(.*?)\*\*/g, "<strong style='color: #ffcc00;'>$1</strong>")  // Gold Bold
-        .replace(/_(.*?)_/g, "<em style='color: #b3b3b3;'>$1</em>")  // Gray Italic
-        .replace(/\~\~(.*?)\~\~/g, "<u style='color: #ff69b4;'>$1</u>"); // Pink Underline
+function parseMarkdownWithLibrary(text) {
+    return marked(text); // This will automatically convert markdown syntax to HTML
 }
-
 const cardContainers = [
     document.getElementById("card1"),
     document.getElementById("card2"),
@@ -97,15 +93,14 @@ async function sendTarotReading(selectedCards) {
         const data = await response.json();
         const aiResponse = data.aiResponse; // Full AI response as text
 
-        // Format the AI response with markdown-style text (e.g., bold, italic, underline)
-        const formattedResponse = formatText(aiResponse);
+        const formattedResponse = parseMarkdownWithLibrary(aiResponse);
 
         // Clear dialog and show it
         dialogPopUp.innerHTML = `<p id="typingEffect"></p>`;
         dialogPopUp.showModal();
 
         const typingElement = document.getElementById("typingEffect");
-        typeText(formattedResponse, typingElement); // Pass the formatted text
+        typeText(aiResponse, typingElement);
 
     } catch (error) {
         console.error("Error:", error);
@@ -126,6 +121,5 @@ function typeText(text, element) {
         }
     }, 100); // Adjust speed (100ms per word)
 }
-
 
 
