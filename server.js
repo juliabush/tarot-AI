@@ -8,15 +8,6 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 10000;
 
-app.use(cors({
-    origin: 'https://asktarotanything.com'
-}));
-app.use(express.static(path.join(__dirname)));
-
-app.get('/', (req, res) => {
-    // Serve index.html directly when accessing root
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
 
 app.post('/get-tarot-reading', async (req, res) => {
     const { userInput, selectedCards } = req.body;  // Extract both user input & selected cards
