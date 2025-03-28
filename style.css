@@ -184,16 +184,14 @@
     display: grid;
     /* place-items: center; */
     place-self: center;
-    /* width: 80%; */
+    gap: 2rem;
     grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 2rem;
   }
   .tarot-page__heading {
     place-self: center;
     font-size: 1.6rem;
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     margin-top: 3rem;
     letter-spacing: 3px;
     color: white;
