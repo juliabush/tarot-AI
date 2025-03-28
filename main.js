@@ -1,6 +1,3 @@
-function parseMarkdownWithLibrary(text) {
-    return marked(text); // This will automatically convert markdown syntax to HTML
-}
 const cardContainers = [
     document.getElementById("card1"),
     document.getElementById("card2"),
@@ -92,8 +89,6 @@ async function sendTarotReading(selectedCards) {
 
         const data = await response.json();
         const aiResponse = data.aiResponse; // Full AI response as text
-
-        const formattedResponse = parseMarkdownWithLibrary(aiResponse);
 
         // Clear dialog and show it
         dialogPopUp.innerHTML = `<p id="typingEffect"></p>`;
