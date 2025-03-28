@@ -103,7 +103,7 @@ async function sendTarotReading(selectedCards) {
 }
 function formatText(text) {
     return text
-        .replace(/\*\*(.*?)\*\*/g, "<strong style='color:rgb(167, 38, 156);'>$1</strong>")
+        .replace(/\*\*([\s\S]*?)\*\*/g, "<strong style='color:rgb(167, 38, 156);'>$1</strong>")
 }
 // Function to display text word by word
 function typeText(text, element) {
