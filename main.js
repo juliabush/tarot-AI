@@ -75,14 +75,15 @@ userSubmitButton.addEventListener("click", async (event) => {
 });
 async function sendTarotReading(selectedCards) {
     try {
-        // Show dialog instantly with loading animation
-        dialogPopUp.innerHTML = `
-            <div class="loading-container">
-                <div class="skeleton"></div>
-                <p class="loading-text">Shuffling the stars...</p>
-            </div>
-        `;
-        dialogPopUp.showModal();
+        setTimeout(() => {
+            dialogPopUp.innerHTML = `
+                <div class="loading-container">
+                    <div class="skeleton"></div>
+                    <p class="loading-text">&#10024;Consulting the stars for guidance...</p>
+                </div>
+            `;
+            dialogPopUp.showModal();
+        }, 1500); // 1.5s delay before the loader appears
 
         const response = await fetch("https://tarot-ai-jbka.onrender.com/get-tarot-reading", {  
             method: 'POST',
