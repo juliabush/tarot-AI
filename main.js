@@ -75,16 +75,27 @@ userSubmitButton.addEventListener("click", async (event) => {
 });
 async function sendTarotReading(selectedCards) {
     try {
+        // Create HTML for displaying selected cards
+        const selectedCardsHTML = selectedCards.map(cardName => `
+            <div class="tarot-card">
+                <img src="images/${cardName}.jpg" alt="${cardName}" class="tarot-card-image">
+                <p class="tarot-card-name">${cardName}</p>
+            </div>
+        `).join(""); // Join to prevent commas in output
+
+        // Show loading popup with selected cards
         setTimeout(() => {
             dialogPopUp.innerHTML = `
-                <div class="loading-container">
-                    <div class="skeleton"></div>
-                    <p class="loading-text">&#10024; Consulting the stars for your personal guidance...</p>
+                <div class="tarot-loading-container">
+                    <p class="tarot-loading-text">&#10024; Consulting the stars for your personal guidance...</p>
+                    <div class="tarot-selected-cards">${selectedCardsHTML}</div>
+                    <div class="tarot-skeleton-loader"></div>
                 </div>
             `;
             dialogPopUp.showModal();
-        },1200); // 1.2s delay before the loader appears
+        }, 1200); // Delay before loader appears
 
+        // Fetch AI response
         const response = await fetch("https://tarot-ai-jbka.onrender.com/get-tarot-reading", {  
             method: 'POST',
             headers: {
@@ -97,16 +108,16 @@ async function sendTarotReading(selectedCards) {
         });
 
         const data = await response.json();
-        const aiResponse = data.aiResponse; // Full AI response as text
+        const aiResponse = data.aiResponse;
 
-        // Replace loading screen with AI response
+        // Replace loading with AI response
         dialogPopUp.innerHTML = `<p id="typingEffect"></p>`;
         const typingElement = document.getElementById("typingEffect");
         typeText(aiResponse, typingElement);
 
     } catch (error) {
         console.error("Error:", error);
-        dialogPopUp.innerHTML = `<p style="color: red;">Something went wrong. Try again.</p>`;
+        dialogPopUp.innerHTML = `<p class="tarot-error-message">Something went wrong. Try again.</p>`;
     }
 }
 function formatText(text) {
