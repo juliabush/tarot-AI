@@ -79,11 +79,11 @@ async function sendTarotReading(selectedCards) {
             dialogPopUp.innerHTML = `
                 <div class="loading-container">
                     <div class="skeleton"></div>
-                    <p class="loading-text">&#10024;Consulting the stars for guidance...</p>
+                    <p class="loading-text">&#10024; Consulting the stars for your personal guidance...</p>
                 </div>
             `;
             dialogPopUp.showModal();
-        }, 1500); // 1.5s delay before the loader appears
+        },1200); // 1.2s delay before the loader appears
 
         const response = await fetch("https://tarot-ai-jbka.onrender.com/get-tarot-reading", {  
             method: 'POST',
