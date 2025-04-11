@@ -283,10 +283,9 @@
     }
     .tarot-page__heading {
       place-self: center;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       text-transform: uppercase;
       margin-bottom: 1rem;
-      margin-top: 3rem;
       letter-spacing: 3px;
       color: white;
       text-shadow: 8px 8px 6px rgb(37, 2, 37);
@@ -295,9 +294,9 @@
       position: relative;
       place-self: center;
       font-size: 0.875rem;
-      left: 1.75rem;
-      padding: 1rem 4rem 1rem 2rem;
-      width: 300px;
+      left: 1.25rem;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
+      width: 260px;
       max-width: 360px;
       border-radius: 2rem;
       border: 3px solid white;
@@ -306,10 +305,11 @@
     }
     button {
       position: relative;
-      width: 60px;
+      width: 40px;
+      font-size: 1rem !important;
       border-radius: 1.5rem;
       border: none;
-      right: 2rem;
+      right: 1.25rem;
       cursor: pointer;
       background-color: #d9b4f8;
     }
@@ -319,7 +319,9 @@
       /* top: 63%; */
       left: 60%;
     }
-  
+    .tarot-page__input-form {
+      margin-bottom: 2rem;
+    }
   }
 @media (min-width:320px) and (max-width:550px) {
   html {
