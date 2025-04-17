@@ -78,7 +78,7 @@ async function sendTarotReading(selectedCards) {
         // Create HTML for displaying selected cards
         const selectedCardsHTML = selectedCards.map(cardName => `
             <div class="tarot-card">
-                <img src="images/${cardName}.jpg" alt="${cardName}" class="tarot-card-image">
+                <img src="tarot-card-images/cups/${cardName}.jpg" alt="${cardName}" class="tarot-card-image">
                 <p class="tarot-card-name">${cardName}</p>
             </div>
         `).join(""); // Join to prevent commas in output
