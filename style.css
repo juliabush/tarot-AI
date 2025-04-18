@@ -255,7 +255,7 @@
   .visible {
     display: block;
   }
-  @media (min-width: 260px) and (max-width: 320px) {
+  @media (min-width: 220px) and (max-width: 320px) {
     html {
       place-content: start center;
     }
