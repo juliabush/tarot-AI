@@ -1,190 +1,208 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-  }
-  
-  body {
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  img, picture, video, canvas, svg {
-    display: block;
-  }
-  
-  input, button, textarea, select {
-    font: inherit;
-  Font-family: inherit;
-  }
-  
-  html {
-    -moz-text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-  }
-  
-  ul[role='list'],
-  ol[role='list'] {
-    list-style: none;
-  }
-  
-  #root, #__next {
-    isolation: isolate;
-  }
-  html, body {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  font-family: inherit;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+html,
+body {
   height: 100%;
-  font-family: 'Inconsolata';
+  font-family: "Inconsolata";
+}
+html {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: radial-gradient(hsl(301, 94%, 44%), hsl(298, 85%, 13%));
+}
+.tarot-page__heading {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  letter-spacing: 4px;
+  color: white;
+  text-shadow: 8px 8px 6px rgb(37, 2, 37);
+}
+.tarot-card-display__flexbox {
+  display: flex;
+  gap: 5rem;
+}
+.tarot-card-display__container {
+  width: 280px;
+  height: 420px;
+  border-radius: 1rem;
+  background: white;
+  border: none;
+  position: relative;
+}
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
   }
-  html {
-    display: grid;
-    place-content: center;
-    text-align: center;
-    background: radial-gradient( hsl(301, 94%, 44%), hsl(298, 85%, 13%));
+  100% {
+    --gradient-angle: 360deg;
   }
-  .tarot-page__heading {
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    letter-spacing: 4px;
-    color: white;
-    text-shadow: 8px 8px 6px rgb(37, 2, 37);
-  }
-  .tarot-card-display__flexbox {
-    display: flex;
-    gap: 5rem;
-  }
-  .tarot-card-display__container {
-    width: 280px;
-    height: 420px;
-    border-radius: 1rem;
-    background: white;
-    border: none;
-    position: relative;
-  } 
-  @property --gradient-angle {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-  }
-  @keyframes rotation {
-    0%      {--gradient-angle: 0deg;}
-    100%    {--gradient-angle: 360deg;}
-  }
-  .tarot-card-display__container::before,
-  .tarot-card-display__container::after {
-    content: "";
-    position: absolute;
-    inset: -0.5rem;
-    border-radius: 1rem;
-    background: linear-gradient(
-      var(--gradient-angle),
-      rgb(15, 21, 110),
-      rgb(99, 91, 207),
-      rgb(127, 163, 209)
-    );
-    animation: rotation 20s linear infinite;
-    z-index: -1;
-  }
-  .tarot-card-display__container::after {
-    filter: blur(3.5rem);
-  }
-  .tarot-page__input-form {
-    margin-bottom: 3rem;
-  }
-  form {
-    display: flex;
-    place-content: center;
-  }
-  input {
-    position: relative;
-    left: 2rem;
-    padding: 1rem 6rem 1rem 2rem;
-    width: 660px;
-    border-radius: 2rem;
-    border: 3px solid white;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    outline: 4px solid rgba(23, 1, 26, 0.767);
-  }
-  input[type=text]:focus {
-    border: 3px solid rgb(140, 101, 231);
-    outline: none;
-  }
-  button {
-    position: relative;
-    width: 80px;
-    border-radius: 2rem;
-    border: none;
-    right: 3rem;
-    cursor: pointer;
-    background-color: #d9b4f8;
-  }
-  button:hover {
-    /* left: -100%; */
-    background: linear-gradient(to right, #d9b4f8, rgba(35, 119, 168, 0.616) );
-    transition: right 0.5s ease-in-out;
-  }
-  button:focus {
-    background-color:  rgba(35, 119, 168, 0.616) ;
-  }
-  dialog {
-    place-self: center;
-    background-color: white;
-    width: 80%;
-    height: 85%;
-    border: none;
-    outline: none;
-    padding: 2rem;
-    text-align: start;
-    border-radius: 2rem;
-    transition: 1s ease-in;
-    font-family: 'Poppins';
-    font-size: 1.25rem;
-  }
-  dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  img {
-    display: none;
-    position: absolute;
-    width: 280px;
-    height: 420px;
-    border-radius: 1rem;
-  }
-  i {
-    background-color: red;
-  }
-  .loading-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
+}
+.tarot-card-display__container::before,
+.tarot-card-display__container::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    var(--gradient-angle),
+    rgb(15, 21, 110),
+    rgb(99, 91, 207),
+    rgb(127, 163, 209)
+  );
+  animation: rotation 20s linear infinite;
+  z-index: -1;
+}
+.tarot-card-display__container::after {
+  filter: blur(3.5rem);
+}
+.tarot-page__input-form {
+  margin-bottom: 3rem;
+}
+form {
+  display: flex;
+  place-content: center;
+}
+input {
+  position: relative;
+  left: 2rem;
+  padding: 1rem 6rem 1rem 2rem;
+  width: 660px;
+  border-radius: 2rem;
+  border: 3px solid white;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  outline: 4px solid rgba(23, 1, 26, 0.767);
+}
+input[type="text"]:focus {
+  border: 3px solid rgb(140, 101, 231);
+  outline: none;
+}
+button {
+  position: relative;
+  width: 80px;
+  border-radius: 2rem;
+  border: none;
+  right: 3rem;
+  cursor: pointer;
+  background-color: #d9b4f8;
+}
+button:hover {
+  /* left: -100%; */
+  background: linear-gradient(to right, #d9b4f8, rgba(35, 119, 168, 0.616));
+  transition: right 0.5s ease-in-out;
+}
+button:focus {
+  background-color: rgba(35, 119, 168, 0.616);
+}
+dialog {
+  place-self: center;
+  background-color: white;
+  width: 80%;
+  height: 85%;
+  border: none;
+  outline: none;
+  padding: 2rem;
+  text-align: start;
+  border-radius: 2rem;
+  transition: 1s ease-in;
+  font-family: "Poppins";
+  font-size: 1.25rem;
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+img {
+  position: absolute;
+  width: 280px;
+  height: 420px;
+  border-radius: 1rem;
+}
+i {
+  background-color: red;
+}
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
 
 .skeleton {
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
-    background-size: 200% 100%;
-    animation: loading 1.2s infinite;
-    border-radius: 10px;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: loading 1.2s infinite;
+  border-radius: 10px;
 }
 
 .loading-text {
-    font-size: 14px;
-    color: #888;
-    margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
 }
 
 @keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 /* Main loading popup container */
 .tarot-loading-container {
@@ -248,82 +266,86 @@
 
 /* Skeleton animation */
 @keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
-  .visible {
-    display: block;
+.visible {
+  display: block;
+}
+@media (min-width: 220px) and (max-width: 320px) {
+  html {
+    place-content: start center;
   }
-  @media (min-width: 220px) and (max-width: 320px) {
-    html {
-      place-content: start center;
-    }
-    .tarot-card-display__container {
-      width: 120px;
-      height: 200px;
-      border-radius: 0.2rem;
-      background: white;
-      border: none;
-      position: relative;
-    } 
-    img {
-      display: none;
-      position: absolute;
-      width: 120px;
-      height: 200px;
-      border-radius: 0.2rem;
-    }
-    .tarot-card-display__flexbox {
-      display: grid;
-      /* place-items: center; */
-      place-self: center;
-      gap: 2rem;
-      grid-template-columns: 1fr 1fr;
-    }
-    .tarot-page__heading {
-      place-self: center;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      letter-spacing: 3px;
-      color: white;
-      text-shadow: 8px 8px 6px rgb(37, 2, 37);
-    }
-    input {
-      position: relative;
-      place-self: center;
-      font-size: 0.875rem;
-      left: 1.25rem;
-      padding: 0.5rem 0.5rem 0.5rem 1rem;
-      width: 260px;
-      max-width: 360px;
-      border-radius: 2rem;
-      border: 3px solid white;
-      text-transform: capitalize;
-      letter-spacing: 0px;
-    }
-    button {
-      position: relative;
-      width: 40px;
-      font-size: 1rem !important;
-      border-radius: 1.5rem;
-      border: none;
-      right: 1.25rem;
-      cursor: pointer;
-      background-color: #d9b4f8;
-    }
-    #card3{
-      position: relative;
-      /* right: 12%; */
-      /* top: 63%; */
-      left: 60%;
-    }
-    .tarot-page__input-form {
-      margin-bottom: 2rem;
-    }
+  .tarot-card-display__container {
+    width: 120px;
+    height: 200px;
+    border-radius: 0.2rem;
+    background: white;
+    border: none;
+    position: relative;
   }
-@media (min-width:320px) and (max-width:550px) {
+  img {
+    display: none;
+    position: absolute;
+    width: 120px;
+    height: 200px;
+    border-radius: 0.2rem;
+  }
+  .tarot-card-display__flexbox {
+    display: grid;
+    /* place-items: center; */
+    place-self: center;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  .tarot-page__heading {
+    place-self: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    color: white;
+    text-shadow: 8px 8px 6px rgb(37, 2, 37);
+  }
+  input {
+    position: relative;
+    place-self: center;
+    font-size: 0.875rem;
+    left: 1.25rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    width: 260px;
+    max-width: 360px;
+    border-radius: 2rem;
+    border: 3px solid white;
+    text-transform: lowercase;
+    letter-spacing: 0px;
+  }
+  button {
+    position: relative;
+    width: 40px;
+    font-size: 1rem !important;
+    border-radius: 1.5rem;
+    border: none;
+    right: 1.25rem;
+    cursor: pointer;
+    background-color: #d9b4f8;
+  }
+  #card3 {
+    position: relative;
+    /* right: 12%; */
+    /* top: 63%; */
+    left: 60%;
+  }
+  .tarot-page__input-form {
+    margin-bottom: 2rem;
+  }
+}
+@media (min-width: 320px) and (max-width: 550px) {
   html {
     place-content: start center;
   }
@@ -334,9 +356,8 @@
     background: white;
     border: none;
     position: relative;
-  } 
+  }
   img {
-    display: none;
     position: absolute;
     width: 140px;
     height: 220px;
@@ -369,7 +390,7 @@
     max-width: 360px;
     border-radius: 2rem;
     border: 3px solid white;
-    text-transform: capitalize;
+    text-transform: lowercase;
     letter-spacing: 0px;
   }
   button {
@@ -381,15 +402,14 @@
     cursor: pointer;
     background-color: #d9b4f8;
   }
-  #card3{
+  #card3 {
     position: relative;
     /* right: 12%; */
     /* top: 63%; */
     left: 60%;
   }
-
 }
-@media (min-width:375px) and (max-width:420px) {
+@media (min-width: 375px) and (max-width: 420px) {
   input {
     position: relative;
     place-self: center;
@@ -399,7 +419,7 @@
     width: 340px;
     border-radius: 2rem;
     border: 3px solid white;
-    text-transform: capitalize;
+    text-transform: lowercase;
     letter-spacing: 0px;
   }
   button {
@@ -411,7 +431,7 @@
     cursor: pointer;
     background-color: #d9b4f8;
   }
-  #card3{
+  #card3 {
     position: relative;
     left: 60%;
   }
@@ -426,7 +446,7 @@
     text-shadow: 8px 8px 6px rgb(37, 2, 37);
   }
 }
-@media (min-width:420px) and (max-width:550px) {
+@media (min-width: 420px) and (max-width: 550px) {
   input {
     position: relative;
     place-self: center;
@@ -436,7 +456,7 @@
     width: 380px;
     border-radius: 2rem;
     border: 3px solid white;
-    text-transform: capitalize;
+    text-transform: lowercase;
     letter-spacing: 0px;
   }
   .tarot-page__heading {
@@ -449,12 +469,12 @@
     color: white;
     text-shadow: 8px 8px 6px rgb(37, 2, 37);
   }
-  #card3{
+  #card3 {
     position: relative;
     left: 60%;
   }
 }
-@media (min-width:550px) and (max-width:620px) {
+@media (min-width: 550px) and (max-width: 620px) {
   input {
     position: relative;
     place-self: center;
@@ -464,42 +484,42 @@
     width: 540px;
     border-radius: 2rem;
     border: 3px solid white;
-    text-transform: capitalize;
+    text-transform: lowercase;
     letter-spacing: 0px;
   }
-    .tarot-card-display__container {
-      width: 160px;
-      height: 250px;
-      border-radius: 0.2rem;
-      background: white;
-      border: none;
-      position: relative;
-    } 
-    img {
-      display: none;
-      position: absolute;
-      width: 160px;
-      height: 250px;
-      border-radius: 0.2rem;
-    }
-    .tarot-card-display__flexbox {
+  .tarot-card-display__container {
+    width: 160px;
+    height: 250px;
+    border-radius: 0.2rem;
+    background: white;
+    border: none;
+    position: relative;
+  }
+  img {
+    display: none;
+    position: absolute;
+    width: 160px;
+    height: 250px;
+    border-radius: 0.2rem;
+  }
+  .tarot-card-display__flexbox {
     place-self: center;
-     gap: 2.5rem;
-     margin-left: 10%;
-     margin-right: 10%;
-    }
-    button {
-      position: relative;
-      width: 70px;
-      border-radius: 1.5rem;
-      border: none;
-      right: 1.87rem;
-      cursor: pointer;
-      background-color: #d9b4f8;
-    }
+    gap: 2.5rem;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  button {
+    position: relative;
+    width: 70px;
+    border-radius: 1.5rem;
+    border: none;
+    right: 1.87rem;
+    cursor: pointer;
+    background-color: #d9b4f8;
+  }
 }
 
-@media (min-width:620px) and (max-width:720px) {
+@media (min-width: 620px) and (max-width: 720px) {
   input {
     position: relative;
     place-self: center;
@@ -509,7 +529,7 @@
     width: 600px;
     border-radius: 2rem;
     border: 3px solid white;
-    text-transform: capitalize;
+    text-transform: lowercase;
     letter-spacing: 0px;
   }
   button {
@@ -528,22 +548,21 @@
     background: white;
     border: none;
     position: relative;
-  } 
+  }
   img {
-    display: none;
     position: absolute;
     width: 180px;
     height: 270px;
     border-radius: 0.2rem;
   }
   .tarot-card-display__flexbox {
-  place-self: center;
-   gap: 3rem;
-   margin-left: 10%;
-   margin-right: 10%;
+    place-self: center;
+    gap: 3rem;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
-@media (min-width:720px) and (max-width:800px) {
+@media (min-width: 720px) and (max-width: 800px) {
   .tarot-card-display__container {
     width: 200px;
     height: 300px;
@@ -551,7 +570,7 @@
     background: white;
     border: none;
     position: relative;
-  } 
+  }
   img {
     display: none;
     position: absolute;
@@ -561,12 +580,12 @@
   }
   .tarot-card-display__flexbox {
     place-self: center;
-     gap: 2.5rem;
-     margin-left: 10%;
-     margin-right: 10%;
-    }
+    gap: 2.5rem;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 }
-@media (min-width:800px) and (max-width:860px) {
+@media (min-width: 800px) and (max-width: 860px) {
   .tarot-card-display__container {
     width: 220px;
     height: 320px;
@@ -574,22 +593,21 @@
     background: white;
     border: none;
     position: relative;
-  } 
+  }
   img {
-    display: none;
     position: absolute;
     width: 220px;
     height: 320px;
     border-radius: 0.2rem;
   }
   .tarot-card-display__flexbox {
-  place-self: center;
-   gap: 3rem;
-   margin-left: 10%;
-   margin-right: 10%;
+    place-self: center;
+    gap: 3rem;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
-@media (min-width:860px) and (max-width:1050px) {
+@media (min-width: 860px) and (max-width: 1050px) {
   .tarot-card-display__container {
     width: 250px;
     height: 380px;
@@ -597,18 +615,17 @@
     background: white;
     border: none;
     position: relative;
-  } 
+  }
   img {
-    display: none;
     position: absolute;
     width: 250px;
     height: 380px;
     border-radius: 0.2rem;
   }
   .tarot-card-display__flexbox {
-  place-self: center;
-   gap: 3rem;
-   margin-left: 10%;
-   margin-right: 10%;
+    place-self: center;
+    gap: 3rem;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
