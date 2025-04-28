@@ -66,7 +66,7 @@ html {
 }
 .tarot-card-display__flexbox {
   display: flex;
-  gap: 5rem;
+  gap: 6rem;
 }
 .tarot-card-display__container {
   width: 280px;
@@ -108,7 +108,7 @@ html {
   filter: blur(3.5rem);
 }
 .tarot-page__input-form {
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 }
 form {
   display: flex;
