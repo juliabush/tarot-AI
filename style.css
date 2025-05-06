@@ -138,6 +138,13 @@ button {
   cursor: pointer;
   background-color: #d9b4f8;
 }
+.tarot-card__instructions {
+  margin-left: 1rem;
+}
+i {
+  font-size: 2rem;
+  background: transparent;
+}
 button:hover {
   /* left: -100%; */
   background: linear-gradient(to right, #d9b4f8, rgba(35, 119, 168, 0.616));
@@ -168,9 +175,6 @@ img {
   width: 280px;
   height: 420px;
   border-radius: 1rem;
-}
-i {
-  background-color: red;
 }
 .loading-container {
   display: flex;
@@ -273,7 +277,9 @@ i {
     background-position: -200% 0;
   }
 }
-
+.exit {
+  display: none !important;
+}
 .visible {
   display: block;
 }
