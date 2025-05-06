@@ -139,7 +139,16 @@ button {
   background-color: #d9b4f8;
 }
 .tarot-card__instructions {
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
+  position: relative;
+  right: 1rem;
+  place-self: center;
+  padding: 1rem;
+  background: rgb(255, 173, 255);
+  border-radius: 50%;
+  border: 0.25rem solid rgb(235, 50, 235);
+  z-index: 30;
+  cursor: pointer;
 }
 i {
   font-size: 2rem;
