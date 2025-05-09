@@ -40,7 +40,7 @@ async function sendTarotReading() {
     dialogPopUp.innerHTML = `
       <button id="closeDialogButton" class="close-dialog-button" style="position: absolute; top: 10px; right: 10px;">&times;</button>
       <div class="tarot-response" style="margin-top: 40px;">
-        <p id="typingEffect"></p>
+        <div id="typingEffect" style="color: pink; font-size: 1rem; line-height: 1.6;"></div>
       </div>
     `;
 
@@ -59,16 +59,14 @@ async function sendTarotReading() {
 }
 
 /**
- * Types out the full text at once with formatting, without word-by-word delay.
- * Converts markdown bold (**bold**) to HTML <strong> and replaces newlines with <br>.
+ * Displays the formatted tarot reading with bold and line breaks.
+ * Converts markdown bold (**bold**) to <strong> and replaces newlines with <br>.
  */
 function typeText(text, element) {
-  // Convert markdown **bold** to <strong> and replace \n with <br> for newlines
   const formattedText = text
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Markdown to <strong> for bold
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Markdown to <strong>
     .replace(/\n/g, "<br>"); // Newlines to <br>
 
-  // Set the inner HTML directly to the formatted text
   element.innerHTML = formattedText;
 }
 
