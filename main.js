@@ -8,7 +8,7 @@ const dialogPopUp = document.getElementById("dialog-popup");
  */
 async function sendTarotReading() {
   try {
-    // Show loading popup (no close button)
+    // Show loading popup (no close button yet)
     setTimeout(() => {
       dialogPopUp.innerHTML = `
         <div class="tarot-loading-container">
@@ -36,16 +36,18 @@ async function sendTarotReading() {
     const data = await response.json();
     const aiResponse = data.aiResponse;
 
-    // Replace loading screen with the AI typing effect + close button
+    // Replace loading screen with the AI typing effect and close button
     dialogPopUp.innerHTML = `
       <button id="closeDialogButton" class="close-dialog-button" style="position: absolute; top: 10px; right: 10px;">&times;</button>
-      <p id="typingEffect" style="margin-top: 40px; color: pink; font-family: "Inconsolata";"></p>
+      <div class="tarot-response" style="margin-top: 40px;">
+        <p id="typingEffect"></p>
+      </div>
     `;
 
     const typingElement = document.getElementById("typingEffect");
     typeText(aiResponse, typingElement);
 
-    // Add close functionality
+    // Reattach close button event
     const closeButton = document.getElementById("closeDialogButton");
     closeButton.addEventListener("click", () => {
       dialogPopUp.close();
@@ -58,11 +60,16 @@ async function sendTarotReading() {
 
 /**
  * Types out text word-by-word with a delay for a typing effect.
- * @param {string} text - Text to type.
- * @param {HTMLElement} element - HTML element to type into.
+ * Also formats **bold** text and newlines.
  */
 function typeText(text, element) {
-  const words = text.split(" ");
+  // Convert markdown bold (**text**) to HTML <strong>text</strong>
+  // and replace \n with <br>
+  const formattedText = text
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\n/g, "<br>");
+
+  const words = formattedText.split(" ");
   let index = 0;
 
   const interval = setInterval(() => {

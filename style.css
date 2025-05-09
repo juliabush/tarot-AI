@@ -288,6 +288,23 @@ img {
     background-position: -200% 0;
   }
 }
+.tarot-response {
+  font-family: "Georgia", serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ffeefb;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
+  border-radius: 12px;
+  white-space: normal;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.tarot-response strong {
+  color: #ffb6c1;
+  font-weight: bold;
+}
 .exit {
   display: none !important;
 }
