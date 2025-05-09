@@ -59,27 +59,17 @@ async function sendTarotReading() {
 }
 
 /**
- * Types out text word-by-word with a delay for a typing effect.
- * Also formats **bold** text and newlines.
+ * Types out the full text at once with formatting, without word-by-word delay.
+ * Converts markdown bold (**bold**) to HTML <strong> and replaces newlines with <br>.
  */
 function typeText(text, element) {
-  // Convert markdown bold (**text**) to HTML <strong>text</strong>
-  // and replace \n with <br>
+  // Convert markdown **bold** to <strong> and replace \n with <br> for newlines
   const formattedText = text
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\n/g, "<br>");
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Markdown to <strong> for bold
+    .replace(/\n/g, "<br>"); // Newlines to <br>
 
-  const words = formattedText.split(" ");
-  let index = 0;
-
-  const interval = setInterval(() => {
-    if (index < words.length) {
-      element.innerHTML += words[index] + " ";
-      index++;
-    } else {
-      clearInterval(interval);
-    }
-  }, 100); // Typing speed
+  // Set the inner HTML directly to the formatted text
+  element.innerHTML = formattedText;
 }
 
 // Attach event listener for user submitting their question
