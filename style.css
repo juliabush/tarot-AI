@@ -287,20 +287,20 @@ img {
 }
 .tarot-response {
   font-family: "Georgia", serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
   line-height: 1.5;
-  color: #ffeefb;
+  color: #fd4dd4;
   padding: 1.5rem;
   border-radius: 12px;
   white-space: normal;
-  max-height: 70vh;
   overflow-y: auto;
 }
 
-/* .tarot-response strong {
-  color: magenta;
+.tarot-response strong {
+  color: rgb(107, 8, 107);
   font-weight: bold;
-} */
+}
 .exit {
   display: none !important;
 }
