@@ -39,7 +39,7 @@ async function sendTarotReading() {
     // Replace loading screen with the AI typing effect + close button
     dialogPopUp.innerHTML = `
       <button id="closeDialogButton" class="close-dialog-button" style="position: absolute; top: 10px; right: 10px;">&times;</button>
-      <p id="typingEffect" style="margin-top: 40px;"></p>
+      <p id="typingEffect" style="margin-top: 40px; color: pink; font-family: "Inconsolata";"></p>
     `;
 
     const typingElement = document.getElementById("typingEffect");
