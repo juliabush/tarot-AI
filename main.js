@@ -40,7 +40,7 @@ async function sendTarotReading() {
     dialogPopUp.innerHTML = `
       <button id="closeDialogButton" class="close-dialog-button" style="position: absolute; top: 10px; right: 10px;">&times;</button>
       <div class="tarot-response" style="margin-top: 40px;">
-        <div id="typingEffect" style="color: magenta; font-size: 1.5rem; line-height: 1.6;"></div>
+        <div id="typingEffect" style="color: navy; font-size: 1.5rem; line-height: 1.6;"></div>
       </div>
     `;
 
