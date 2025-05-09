@@ -16,8 +16,8 @@ const corsOptions = {
   allowedHeaders: ["Content-Type"],
 };
 
-app.use(cors(corsOptions)); // Enable CORS
-app.use(express.json()); // Parse incoming JSON
+app.use(cors(corsOptions));
+app.use(express.json());
 
 // Static file path setup
 const __filename = fileURLToPath(import.meta.url);
@@ -26,19 +26,17 @@ const __dirname = path.dirname(__filename);
 // Serve static files
 app.use(express.static(__dirname));
 
-// Fallback route to serve index.html
+// Fallback route
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Tarot reading endpoint
+// Tarot reading endpoint (no cards)
 app.post("/get-tarot-reading", async (req, res) => {
-  const { userInput, selectedCards } = req.body;
+  const { userInput } = req.body;
 
-  if (!selectedCards || selectedCards.length !== 3) {
-    return res
-      .status(400)
-      .json({ error: "Invalid card selection. Exactly 3 cards required." });
+  if (!userInput || userInput.trim() === "") {
+    return res.status(400).json({ error: "User input is required." });
   }
 
   try {
@@ -54,17 +52,11 @@ app.post("/get-tarot-reading", async (req, res) => {
           {
             role: "system",
             content:
-              "You are a wise and articulate tarot reader. Your goal is to provide in-depth, insightful, and accurate tarot readings. Ensure your responses are always well-explained, detailed, and strictly related to tarot. Please try and always include hypothetical situations relating to the user input, a few specific objects, a few possible first letters of names or surnames, an angel number and other numerical values or dates, as a way to make the tarot reading seem personally tailored and specific. Be bold with your guesses and visuals, as delusional as you can yet still use examples that would happen in real life, lose any logic and balance, make them feel deja vu with your psychic predictions. Format the reading in three distinct sections for each card and a cohesive yet bombastic and wild conclusion. For each card section, list the card, then em dash and a fabulous title. For the conclusion, create a catchy, witty and whimsical concluding title.",
+              "You are a wise and articulate tarot reader. Your goal is to provide in-depth, insightful, and accurate tarot readings. Always relate your answers to the user's input. Include hypothetical scenarios, symbolic objects, first initials of names, dates, angel numbers, and wild, surreal visuals. Be bold and creative, unbound by logic, making the user feel like it's a mystical deja vu. Format the reading into three symbolic stages and finish with a dramatic, whimsical conclusion title.",
           },
           {
             role: "user",
-            content: `The user has asked for a tarot reading: "${userInput}". The following three cards were drawn: 
-                        
-                        1. **${selectedCards[0]}**  
-                        2. **${selectedCards[1]}**  
-                        3. **${selectedCards[2]}**  
-
-                        Please provide an insightful three-card reading. Format it into three sections, one for each card, and explain how they connect in a cohesive conclusion. Make it wild, hypothetical and with delusional guesses.`,
+            content: `The user has asked for a tarot reading: "${userInput}". Please provide a symbolic and immersive tarot reading divided into three themed sections. Make it wild, mystical, hypothetical, and psychic.`,
           },
         ],
         temperature: 0.8,
