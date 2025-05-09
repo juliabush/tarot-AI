@@ -121,7 +121,7 @@ input {
   width: 660px;
   border-radius: 2rem;
   border: 3px solid white;
-  text-transform: lowercase;
+  text-transform: capitalize;
   letter-spacing: 1px;
   outline: 4px solid rgba(23, 1, 26, 0.767);
 }
