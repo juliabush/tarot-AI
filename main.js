@@ -8,22 +8,15 @@ const dialogPopUp = document.getElementById("dialog-popup");
  */
 async function sendTarotReading() {
   try {
-    // Show loading popup (with a close button)
+    // Show loading popup (no close button)
     setTimeout(() => {
       dialogPopUp.innerHTML = `
-        <button id="closeDialogButton" class="close-dialog-button">&times;</button>
         <div class="tarot-loading-container">
           <p class="tarot-loading-text">&#10024; Consulting the stars for your personal guidance...</p>
           <div class="tarot-skeleton-loader"></div>
         </div>
       `;
       dialogPopUp.showModal();
-
-      // Add close functionality
-      const closeButton = document.getElementById("closeDialogButton");
-      closeButton.addEventListener("click", () => {
-        dialogPopUp.close();
-      });
     }, 500); // Slight delay for smoother feel
 
     // POST the user input to backend API
@@ -43,16 +36,16 @@ async function sendTarotReading() {
     const data = await response.json();
     const aiResponse = data.aiResponse;
 
-    // Replace loading screen with the AI typing effect
+    // Replace loading screen with the AI typing effect + close button
     dialogPopUp.innerHTML = `
-      <button id="closeDialogButton" class="close-dialog-button">&times;</button>
-      <p id="typingEffect"></p>
+      <button id="closeDialogButton" class="close-dialog-button" style="position: absolute; top: 10px; right: 10px;">&times;</button>
+      <p id="typingEffect" style="margin-top: 40px;"></p>
     `;
 
     const typingElement = document.getElementById("typingEffect");
     typeText(aiResponse, typingElement);
 
-    // Reattach close button event
+    // Add close functionality
     const closeButton = document.getElementById("closeDialogButton");
     closeButton.addEventListener("click", () => {
       dialogPopUp.close();
