@@ -276,9 +276,6 @@ img {
   color: red;
   font-weight: bold;
 }
-#typingEffect {
-  color: pink;
-}
 /* Skeleton animation */
 @keyframes loading {
   0% {
@@ -290,10 +287,9 @@ img {
 }
 .tarot-response {
   font-family: "Georgia", serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.5;
   color: #ffeefb;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
   border-radius: 12px;
   white-space: normal;
@@ -301,10 +297,10 @@ img {
   overflow-y: auto;
 }
 
-.tarot-response strong {
+/* .tarot-response strong {
   color: magenta;
   font-weight: bold;
-}
+} */
 .exit {
   display: none !important;
 }
